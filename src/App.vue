@@ -1,11 +1,21 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/breed-selector">Breed Selector</router-link> |
-    <router-link to="/favorites">Favorites</router-link>
-  </div>
+  <Header />
   <router-view />
 </template>
+
+<script>
+import Header from "@/components/Header.vue";
+import { useStore } from "vuex";
+export default {
+  components: {
+    Header
+  },
+  setup() {
+    const store = useStore();
+    store.commit("initStore");
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
