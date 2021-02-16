@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes = [
@@ -10,17 +10,17 @@ const routes = [
   {
     path: "/breed-selector",
     name: "Breed Selector",
-    component: () => import("../views/BreedSelector.vue")
+    component: () => import("../views/BreedSelectorPage.vue")
   },
   {
     path: "/favorites",
     name: "Favorites",
-    component: () => import("../views/Favorites.vue")
+    component: () => import("../views/FavoritesPage.vue")
   }
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 });
 

@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <transition-group name="list">
+    <transition-group name="list" appear>
       <slot />
     </transition-group>
   </div>
@@ -33,15 +33,20 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  width: 100%;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: calc(100vw / 4 - 32.5px);
   gap: 30px;
   padding: 20px;
   margin-bottom: 200px;
 }
-.dog-card {
-  height: calc(100vw / 4);
+
+@media screen and (max-width: 738px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: calc(100vw / 2 - 35px);
+  }
 }
 
 .list-item {
@@ -56,5 +61,16 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+
+.grid {
+  * {
+    img {
+      max-width: 400px;
+      max-height: 400px;
+      height: auto;
+      width: auto;
+    }
+  }
 }
 </style>

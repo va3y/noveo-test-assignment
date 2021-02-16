@@ -1,6 +1,10 @@
 <template>
-  <div class="dog-card" @click="handleLikeClick()">
-    <LikeIcon class="heart" :class="{ fillred: dogObject.isFavorite }" />
+  <div
+    class="dog-card"
+    :class="{ hidden: favoriteOnly && !dogObject.isFavorite }"
+    @click="handleLikeClick()"
+  >
+    <LikeIcon class="heart" :class="{ liked: dogObject.isFavorite }" />
     <img :src="dogObject.url" />
   </div>
 </template>
@@ -26,12 +30,16 @@ export default {
     index: {
       type: Number,
       default: 0
+    },
+    favoriteOnly: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
     LikeIcon
   },
-  setup(props) {
+  setup(props, context) {
     const store = useStore();
     const { dogObject, index } = toRefs(props);
     const handleLikeClick = () => {
@@ -46,6 +54,7 @@ export default {
           index: index.value
         });
       }
+      context.emit("cardClicked");
     };
     return { handleLikeClick };
   }
@@ -59,16 +68,32 @@ img {
   object-fit: cover;
 }
 
+.dog-card:hover .heart {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .heart {
   display: none;
 }
 
-.fillred {
-  fill: red;
+.liked {
   display: block;
+  transition: all 2s;
+  animation-duration: 0.6s;
+  animation-name: pop;
 }
 
-.dog-card:hover .heart {
-  display: block;
+@keyframes pop {
+  from,
+  to {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
 }
 </style>

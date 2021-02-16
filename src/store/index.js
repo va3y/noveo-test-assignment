@@ -6,7 +6,8 @@ export default createStore({
   state: {
     renderedArray: [],
     favoritesArray: [],
-    breedsArray: []
+    breedsArray: [],
+    selectedBreed: "random"
   },
   mutations: {
     initStore: state => {
@@ -36,6 +37,9 @@ export default createStore({
     },
     renderFavorites: state => {
       state.renderedArray = state.favoritesArray;
+    },
+    setSelectedBreed: (state, newBreed) => {
+      state.selectedBreed = newBreed;
     }
   },
   actions: {
@@ -60,7 +64,6 @@ export default createStore({
           fetchDogsURL = `https://dog.ceo/api/breed/${dogType}/images/random/20`;
         }
         const { data } = await axios.get(fetchDogsURL);
-        console.log(data);
         context.commit("addDogs", wrapEmptyObject(data.message));
       } catch (error) {
         console.error("error fetching the data", error);
@@ -71,24 +74,11 @@ export default createStore({
       try {
         const breedsURL = "https://dog.ceo/api/breeds/list/all";
         const { data } = await axios.get(breedsURL);
-        // const capitalized = Object.keys(data.message).map(
-        //   breed => breed[0].toUpperCase() + breed.substring(1)
-        // );
         context.commit("setBreeds", Object.keys(data.message));
       } catch (error) {
         console.error("error fetching the data", error);
       }
     }
-
-    // handleLikeClick(context, dogObject) {
-    //   state.renderedArray[index].isFavorite = !state.renderedArray[index]
-    //     .isFavorite;
-
-    //   if (state.renderedArray[index].isFavorite) {
-    //   } else {
-    //   }
-    //   saveToStorage(state.renderedArray[index]);
-    // }
   },
   modules: {}
 });

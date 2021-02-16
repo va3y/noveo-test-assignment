@@ -1,11 +1,24 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/breed-selector">Breed Selector</router-link> |
-    <router-link to="/favorites">
-      Favorites❤️({{ getFavoritesCount }})
+  <header>
+    <router-link to="/">
+      <h1>Vue.js Dogs</h1>
     </router-link>
-  </div>
+    <nav>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        |
+        <li>
+          <router-link to="/breed-selector">Breed Selector</router-link>
+        </li>
+        |
+        <li>
+          <router-link to="/favorites">
+            ❤️Favorites ({{ getFavoritesCount }})
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -21,4 +34,51 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $primary;
+  padding: 0 5%;
+}
+
+h1 {
+  font-family: $logo-font;
+  font-size: 2rem;
+}
+
+nav {
+  width: 60%;
+  max-width: 600px;
+}
+
+li a {
+  margin: 0 4%;
+  text-decoration: none;
+}
+
+li:hover,
+.router-link-exact-active {
+  font-weight: 1000;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  align-items: center;
+  align-content: center;
+  line-height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    display: none;
+  }
+  nav {
+    width: 100%;
+  }
+}
+</style>
