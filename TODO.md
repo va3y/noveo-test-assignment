@@ -1,0 +1,10 @@
+- [ ] add history mode 
+- [ ] make photo disappear after removing in favorites 
+- [ ] like / dislike animation
+- [ ] basic design (header and page titles)
+- [ ] add placeholder if favs are empty
+- [ ] add "end-of images" banner on breeds sel. page (not sure)
+- [ ] css refactor
+- [ ] unit tests
+- [ ] e2e tests
+- [ ] dockerize
