@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1613560492354" clover="3.2.0">
+  <project timestamp="1613560492355" name="All files">
+    <metrics statements="21" coveredstatements="12" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="3" elements="31" coveredelements="15" complexity="0" loc="21" ncloc="21" packages="2" files="3" classes="3"/>
+    <package name="components">
+      <metrics statements="6" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="InfiniteScroll.vue" path="/Users/ivanovvaleriy/dev/noveo-test-assignment/src/components/InfiniteScroll.vue">
+        <metrics statements="6" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.DogCard">
+      <metrics statements="15" coveredstatements="11" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <file name="DogCard.vue" path="/Users/ivanovvaleriy/dev/noveo-test-assignment/src/components/DogCard/DogCard.vue">
+        <metrics statements="13" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+      </file>
+      <file name="LikeIcon.vue" path="/Users/ivanovvaleriy/dev/noveo-test-assignment/src/components/DogCard/LikeIcon.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

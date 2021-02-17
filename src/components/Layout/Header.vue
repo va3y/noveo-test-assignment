@@ -12,7 +12,7 @@
         </li>
         |
         <li>
-          <router-link to="/favorites">
+          <router-link to="/favorites" data-test="favorites">
             ❤️Favorites ({{ getFavoritesCount }})
           </router-link>
         </li>

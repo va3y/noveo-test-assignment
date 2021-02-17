@@ -3,10 +3,13 @@
     <div>
       Show me some
       <select v-model="selectedBreed"
-        ><option value="random" selected>random</option>
-        <option v-for="(breed, index) in breedsArray" :key="index">{{
-          breed
-        }}</option></select
+        ><option value="random" selected>Random</option>
+        <option
+          v-for="(breed, index) in breedsArray"
+          :key="index"
+          :value="breed"
+          >{{ capitalize(breed) }}</option
+        ></select
       >dogs
     </div>
   </div>
@@ -26,9 +29,14 @@ export default {
       store.commit("setSelectedBreed", selectedBreed.value);
     });
 
+    const capitalize = word => {
+      return word[0].toUpperCase() + word.substring(1);
+    };
+
     return {
       breedsArray,
-      selectedBreed
+      selectedBreed,
+      capitalize
     };
   }
 };

@@ -5,10 +5,12 @@
 - [x] add placeholder if favs are empty
 - [x] make images square
 - [ ] add "end-of images" banner on breeds sel. page (not sure)
+- [ ] create a spinner before new phooto batch loads
 - [ ] come up with a fancy dropdown
 - [ ] css refactor
 - [ ] file hierarchy refactor
-- [ ] unit tests
-- [ ] e2e tests
+- [x] unit tests
+- [x] e2e tests
 - [ ] dockerize
 - [ ] write readme
+

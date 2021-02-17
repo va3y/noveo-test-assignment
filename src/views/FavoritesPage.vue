@@ -14,7 +14,7 @@
 <script>
 import InfiniteScroll from "../components/InfiniteScroll";
 import DogCard from "../components/DogCard/DogCard";
-import FavoritesPlaceholder from "../components/FavoritesPlaceholder";
+import FavoritesPlaceholder from "../components/Layout/FavoritesPlaceholder";
 import { useStore } from "vuex";
 import { computed, ref } from "vue";
 

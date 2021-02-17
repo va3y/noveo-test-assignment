@@ -1,6 +1,8 @@
 const saveToStorage = dogObject => {
   const savedDogs = JSON.parse(localStorage.getItem("savedDogs"));
-  savedDogs.push(dogObject);
+  if (savedDogs !== null) {
+    savedDogs.push(dogObject);
+  }
   localStorage.setItem("savedDogs", JSON.stringify(savedDogs));
 };
 

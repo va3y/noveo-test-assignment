@@ -3,9 +3,10 @@
     class="dog-card"
     :class="{ hidden: favoriteOnly && !dogObject.isFavorite }"
     @click="handleLikeClick()"
+    data-test="dog-card"
   >
     <LikeIcon class="heart" :class="{ liked: dogObject.isFavorite }" />
-    <img :src="dogObject.url" />
+    <img :src="dogObject.url" data-test="dog-card-image" />
   </div>
 </template>
 
@@ -20,12 +21,12 @@ export default {
       type: Object,
       default: () => {
         return {
+          // an error img fallback :)
           url:
             "https://farm8.staticflickr.com/7172/6508022985_b22200ced0_z.jpg",
           isFavorite: false
         };
       }
-      // an error img fallback :)
     },
     index: {
       type: Number,
@@ -39,7 +40,7 @@ export default {
   components: {
     LikeIcon
   },
-  setup(props, context) {
+  setup(props) {
     const store = useStore();
     const { dogObject, index } = toRefs(props);
     const handleLikeClick = () => {
@@ -54,7 +55,6 @@ export default {
           index: index.value
         });
       }
-      context.emit("cardClicked");
     };
     return { handleLikeClick };
   }

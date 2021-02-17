@@ -18,7 +18,7 @@
 <script>
 import InfiniteScroll from "@/components/InfiniteScroll";
 import DogCard from "@/components/DogCard/DogCard";
-import BreedSelector from "@/components/BreedSelector";
+import BreedSelector from "@/components/Layout/BreedSelector";
 import { useStore } from "vuex";
 import { computed, watch } from "vue";
 export default {
