@@ -1,21 +1,23 @@
 <template>
+  <ErrorCard />
   <div class="grid">
-    <transition-group name="list" appear>
-      <slot />
-    </transition-group>
+    <slot />
   </div>
 </template>
 
 <script>
+import ErrorCard from "@/components/Layout/ErrorCard";
+
 export default {
-  components: {},
+  components: { ErrorCard },
   props: {
     dogType: {
       type: String,
       default: "random"
     }
   },
-  setup(props, context) {
+  emits: ["loadMore"],
+  setup(_, context) {
     let windowBottom;
     window.onscroll = () => {
       windowBottom =
@@ -47,20 +49,6 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: calc(100vw / 2 - 35px);
   }
-}
-
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active,
-.list-leave-active {
-  transition: all 1s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 .grid {

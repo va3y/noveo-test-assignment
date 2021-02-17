@@ -62,10 +62,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes slideInFromLeft {
+  0% {
+    transform: translatey(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  transition: all 2s;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .dog-card:hover .heart {

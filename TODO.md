@@ -5,10 +5,12 @@
 - [x] add placeholder if favs are empty
 - [x] make images square
 - [ ] add "end-of images" banner on breeds sel. page (not sure)
-- [ ] create a spinner before new phooto batch loads
+- [x] make an error card if there's a backend problem
+- [x] fix a breed selector page animation bug
+- [ ] create a spinner before new photo batch loads
 - [ ] come up with a fancy dropdown
 - [ ] css refactor
-- [ ] file hierarchy refactor
+- [x] file hierarchy refactor
 - [x] unit tests
 - [x] e2e tests
 - [ ] dockerize

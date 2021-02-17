@@ -31,5 +31,8 @@ export default {
   },
   setSelectedBreed: (state, newBreed) => {
     state.selectedBreed = newBreed;
+  },
+  showError: state => {
+    state.errorFetchingData = true;
   }
 };

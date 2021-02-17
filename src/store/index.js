@@ -7,7 +7,8 @@ export default createStore({
     renderedArray: [],
     favoritesArray: [],
     breedsArray: [],
-    selectedBreed: "random"
+    selectedBreed: "random",
+    errorFetchingData: false
   },
   mutations,
   actions,

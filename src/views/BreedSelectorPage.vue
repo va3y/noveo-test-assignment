@@ -1,8 +1,8 @@
 <template>
   <div>
     <h2>On this page you can select a specific dog breed 🐶</h2>
-    <BreedSelector />
 
+    <BreedSelector />
     <InfiniteScroll @loadMore="loadMoreDogs">
       <DogCard
         v-for="(dog, index) in renderedArray"
@@ -19,6 +19,7 @@
 import InfiniteScroll from "@/components/InfiniteScroll";
 import DogCard from "@/components/DogCard/DogCard";
 import BreedSelector from "@/components/Layout/BreedSelector";
+
 import { useStore } from "vuex";
 import { computed, watch } from "vue";
 export default {
@@ -35,14 +36,18 @@ export default {
       store.dispatch("fetchDogs", currSelectedBreed.value);
     };
     refreshDogsArray();
-
     watch(currSelectedBreed, refreshDogsArray);
 
     const loadMoreDogs = () => {
       store.dispatch("fetchDogs", currSelectedBreed.value);
     };
+
+    const renderedArray = computed(() => {
+      return store.state.renderedArray;
+    });
+
     return {
-      renderedArray: computed(() => store.state.renderedArray),
+      renderedArray,
       loadMoreDogs
     };
   }

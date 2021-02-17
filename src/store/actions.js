@@ -23,6 +23,7 @@ export default {
       context.commit("addDogs", wrapEmptyObject(data.message));
     } catch (error) {
       console.error("error fetching the data", error);
+      context.commit("showError");
     }
   },
 
