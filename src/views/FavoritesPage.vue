@@ -1,5 +1,5 @@
 <template>
-  <FavoritesPlaceholder v-if="favoritesArray.length === 0" />
+  <FavoritesPlaceholder v-if="renderedArray.length === 0" />
   <InfiniteScroll dog-type="favorites">
     <DogCard
       v-for="(dog, index) in renderedArray"
@@ -16,26 +16,18 @@ import InfiniteScroll from "../components/InfiniteScroll";
 import DogCard from "../components/DogCard/DogCard";
 import FavoritesPlaceholder from "../components/Layout/FavoritesPlaceholder";
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 export default {
   components: { InfiniteScroll, DogCard, FavoritesPlaceholder },
   setup() {
     const store = useStore();
     store.commit("renderFavorites");
-    const removeCard = ref(true);
     return {
-      renderedArray: computed(() => store.state.renderedArray),
-      favoritesArray: computed(() => store.state.favoritesArray),
-
-      removeCard
+      renderedArray: computed(() => store.state.renderedArray)
     };
   }
 };
 </script>
 
-<style lang="scss" scoped>
-.hidden {
-  display: none;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -11,6 +11,7 @@
         :dogObject="dog"
         :index="index"
       />
+      <EndOfBreed v-if="showPlaceholder" />
     </InfiniteScroll>
   </div>
 </template>
@@ -18,37 +19,48 @@
 <script>
 import InfiniteScroll from "@/components/InfiniteScroll";
 import DogCard from "@/components/DogCard/DogCard";
+import EndOfBreed from "@/components/Layout/EndOfBreed.vue";
 import BreedSelector from "@/components/Layout/BreedSelector";
 
 import { useStore } from "vuex";
-import { computed, watch } from "vue";
+import { computed, watch, ref } from "vue";
 export default {
   components: {
     InfiniteScroll,
     DogCard,
-    BreedSelector
+    BreedSelector,
+    EndOfBreed
   },
   setup() {
     const store = useStore();
+    const showPlaceholder = ref(false);
     const currSelectedBreed = computed(() => store.state.selectedBreed);
-    const refreshDogsArray = () => {
+    const refreshDogsArray = newBreed => {
+      showPlaceholder.value = false;
       store.commit("clearRenderedArray");
-      store.dispatch("fetchDogs", currSelectedBreed.value);
+      store.dispatch("fetchDogs", newBreed);
     };
-    refreshDogsArray();
-    watch(currSelectedBreed, refreshDogsArray);
+    refreshDogsArray("random");
+    watch(currSelectedBreed, newBreed => refreshDogsArray(newBreed));
+
+    const renderedArray = computed(() => store.state.renderedArray);
+
+    const checkIfEnd = newArray => {
+      if (newArray.length < 20 && newArray.length != 0) {
+        showPlaceholder.value = true;
+      }
+    };
+    watch(renderedArray, checkIfEnd);
 
     const loadMoreDogs = () => {
+      if (showPlaceholder.value === true) return;
       store.dispatch("fetchDogs", currSelectedBreed.value);
     };
-
-    const renderedArray = computed(() => {
-      return store.state.renderedArray;
-    });
 
     return {
       renderedArray,
-      loadMoreDogs
+      loadMoreDogs,
+      showPlaceholder
     };
   }
 };

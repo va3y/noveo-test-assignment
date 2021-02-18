@@ -2,15 +2,18 @@
   <div>
     <div>
       Show me some
-      <select v-model="selectedBreed"
-        ><option value="random" selected>Random</option>
-        <option
-          v-for="(breed, index) in breedsArray"
-          :key="index"
-          :value="breed"
-          >{{ capitalize(breed) }}</option
-        ></select
-      >dogs
+      <label>
+        <select v-model="selectedBreed"
+          ><option value="random" selected>Random</option>
+          <option
+            v-for="(breed, index) in breedsArray"
+            :key="index"
+            :value="breed"
+            >{{ capitalize(breed) }}</option
+          ></select
+        ></label
+      >
+      dogs
     </div>
   </div>
 </template>
@@ -25,7 +28,6 @@ export default {
     const breedsArray = computed(() => store.state.breedsArray);
     const selectedBreed = ref("random");
     watch(selectedBreed, () => {
-      console.log(selectedBreed.value);
       store.commit("setSelectedBreed", selectedBreed.value);
     });
 
@@ -48,5 +50,19 @@ option {
 }
 select {
   text-align-last: left;
+  padding: 0 10px;
+  border: 2px $primary solid;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+label:after {
+  content: "v";
+  font-size: 16px;
+  color: $secondary;
+  right: 20px;
+  position: relative;
+  pointer-events: none;
 }
 </style>

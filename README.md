@@ -1,34 +1,40 @@
-# noveo-test-assignment
+# Vue.js Dogs
 
-## Project setup
+A dog views, based on the [Dog CEO API](https://dog.ceo/dog-api/). Made with Vue 3 Composition API and SCSS.
+
+The app primarily uses Vuex to fetch and store dogs from the API. It uses 2 main arrays: 
+  
+1. `renderedArray` that stores dogs that are currently displayed.
+2. `favoritesArray` that stores favorite dogs and saves them to the HTML5 LocalStorage. Dog URL is used as a unique id. 
+
+The dog cards are stored as a dog object. Right now it is fairy simple: 
+
 ```
+dogObject: {
+  url: String,
+  isFavorite: Boolean
+}
+```
+
+The list of breeds is also fetched dynamically to make the app more maintainable.
+
+Deployed on Netlify [here](https://brave-booth-d3e36c.netlify.app/).
+
+
+## Commands
+```
+Setup: 
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+Dev server: 
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+Compile for production: 
 npm run build
-```
 
-### Run your unit tests
-```
+Run unit tests: 
 npm run test:unit
-```
 
-### Run your end-to-end tests
-```
+Run e2e tests: 
 npm run test:e2e
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

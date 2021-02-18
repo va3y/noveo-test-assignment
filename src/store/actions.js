@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   async fetchDogs(context, dogType) {
-    // Creates an object out of fetched data and checks if the photo is already liked
+    // Creates a dog object out of fetched data and checks if the photo is already liked
     const wrapEmptyObject = arr => {
       return arr.map(url => {
         return {
@@ -34,6 +34,7 @@ export default {
       context.commit("setBreeds", Object.keys(data.message));
     } catch (error) {
       console.error("error fetching the data", error);
+      context.commit("showError");
     }
   }
 };

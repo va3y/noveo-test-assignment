@@ -5,7 +5,11 @@
     @click="handleLikeClick()"
     data-test="dog-card"
   >
-    <LikeIcon class="heart" :class="{ liked: dogObject.isFavorite }" />
+    <LikeIcon
+      class="heart"
+      :class="{ liked: dogObject.isFavorite }"
+      v-show="!favoriteOnly"
+    />
     <img :src="dogObject.url" data-test="dog-card-image" />
   </div>
 </template>
@@ -56,13 +60,14 @@ export default {
         });
       }
     };
+
     return { handleLikeClick };
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@keyframes slideInFromLeft {
+@keyframes card-slide-in {
   0% {
     transform: translatey(20px);
     opacity: 0;
@@ -78,7 +83,7 @@ img {
   width: 100%;
   object-fit: cover;
   transition: all 2s;
-  animation: 1s ease-out 0s 1 slideInFromLeft;
+  animation: 1s card-slide-in;
 }
 
 .dog-card:hover .heart {
@@ -86,7 +91,8 @@ img {
 }
 
 .hidden {
-  display: none;
+  opacity: 0.2;
+  transition: all 1s;
 }
 
 .heart {
@@ -94,10 +100,12 @@ img {
 }
 
 .liked {
+  opacity: 1;
   display: block;
   transition: all 2s;
   animation-duration: 0.6s;
   animation-name: pop;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes pop {

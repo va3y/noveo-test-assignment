@@ -7,7 +7,9 @@
 
 <script>
 import Header from "@/components/Layout/Header.vue";
+import { useRoute } from "vue-router";
 import { useStore } from "vuex";
+import { watch } from "vue";
 export default {
   components: {
     Header
@@ -15,6 +17,10 @@ export default {
   setup() {
     const store = useStore();
     store.commit("initStore");
+
+    const route = useRoute();
+
+    watch(route, to => (document.title = to.meta.title));
   }
 };
 </script>

@@ -40,7 +40,7 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: calc(100vw / 4 - 32.5px);
   gap: 30px;
-  padding: 20px;
+  margin: 30px;
   margin-bottom: 200px;
 }
 
@@ -48,17 +48,6 @@ export default {
   .grid {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: calc(100vw / 2 - 35px);
-  }
-}
-
-.grid {
-  * {
-    img {
-      max-width: 400px;
-      max-height: 400px;
-      height: auto;
-      width: auto;
-    }
   }
 }
 </style>

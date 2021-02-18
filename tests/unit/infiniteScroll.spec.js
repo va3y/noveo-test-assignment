@@ -1,5 +1,5 @@
 import InfiniteScroll from "@/components/InfiniteScroll.vue";
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 
 describe("dogCard", () => {
   test("Emits 'loadMore' after scrolling down", async () => {
@@ -9,7 +9,7 @@ describe("dogCard", () => {
       },
       commit: jest.fn()
     };
-    const wrapper = mount(InfiniteScroll, {
+    const wrapper = shallowMount(InfiniteScroll, {
       global: {
         mocks: {
           $store
@@ -17,7 +17,7 @@ describe("dogCard", () => {
       }
     });
     // document.documentElement.offsetHeight equals 0
-    // they need to be equal in order for scroll event listener to work
+    // they need to be the same in order for scroll event listener to trigger
     document.documentElement.scrollTop = 0;
     window.innerHeight = 0;
     console.log(document.documentElement.offsetHeight);

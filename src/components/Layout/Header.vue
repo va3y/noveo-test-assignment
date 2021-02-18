@@ -44,6 +44,12 @@ header {
   padding: 0 5%;
 }
 
+@media screen and (max-width: 576px) {
+  header {
+    height: $header-height-mobile;
+  }
+}
+
 h1 {
   font-family: $logo-font;
   font-size: 2rem;
@@ -59,9 +65,8 @@ li a {
   text-decoration: none;
 }
 
-li:hover,
-.router-link-exact-active {
-  font-weight: 1000;
+.router-link-active {
+  font-weight: 900;
 }
 
 ul {

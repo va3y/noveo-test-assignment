@@ -14,9 +14,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-  setup() {
-    return {};
   }
 };
 </script>

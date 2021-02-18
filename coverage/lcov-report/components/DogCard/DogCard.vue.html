@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.23% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/13</span>
+                <span class='fraction'>9/12</span>
             </div>
         
             
@@ -43,9 +43,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.23% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/13</span>
+                <span class='fraction'>9/12</span>
             </div>
         
             
@@ -155,7 +155,21 @@
 <a name='L97'></a><a href='#L97'>97</a>
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -211,9 +225,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,9 +285,10 @@
     class="dog-card"
     :class="{ hidden: favoriteOnly &amp;&amp; !dogObject.isFavorite }"
     @click="handleLikeClick()"
+    data-test="dog-card"
   &gt;
     &lt;LikeIcon class="heart" :class="{ liked: dogObject.isFavorite }" /&gt;
-    &lt;img :src="dogObject.url" /&gt;
+    &lt;img :src="dogObject.url" data-test="dog-card-image" /&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
@@ -276,12 +303,12 @@ export default {
       type: Object,
       default: () =&gt; {
         return {
+          // an error img fallback :)
           url:
             "https://farm8.staticflickr.com/7172/6508022985_b22200ced0_z.jpg",
           isFavorite: false
         };
       }
-      // an error img fallback :)
     },
     index: {
       type: Number,
@@ -295,7 +322,7 @@ export default {
   components: {
     LikeIcon
   },
-  setup(props, context) {
+  setup(props) {
     const store = useStore();
     const { dogObject, index } = toRefs(props);
     const handleLikeClick = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
@@ -310,7 +337,6 @@ export default {
           index: index.value
         });
       }
-<span class="cstat-no" title="statement not covered" >      context.</span>emit("cardClicked");
     };
     return { handleLikeClick };
   }
@@ -318,10 +344,23 @@ export default {
 &lt;/script&gt;
 &nbsp;
 &lt;style lang="scss" scoped&gt;
+@keyframes slideInFromLeft {
+  0% {
+    transform: translatey(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+&nbsp;
 img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  transition: all 2s;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 &nbsp;
 .dog-card:hover .heart {
@@ -360,7 +399,7 @@ img {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Feb 17 2021 14:14:52 GMT+0300 (Moscow Standard Time)
+                at Thu Feb 18 2021 10:42:07 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

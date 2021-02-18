@@ -4,15 +4,15 @@
 - [x] basic design (header and page titles)
 - [x] add placeholder if favs are empty
 - [x] make images square
-- [ ] add "end-of images" banner on breeds sel. page (not sure)
+- [x] add "end-of images" banner on breeds sel. page (not sure)
 - [x] make an error card if there's a backend problem
 - [x] fix a breed selector page animation bug
+- [x] style select tag🤮
 - [ ] create a spinner before new photo batch loads
-- [ ] come up with a fancy dropdown
-- [ ] css refactor
+- [x] css refactor
 - [x] file hierarchy refactor
 - [x] unit tests
 - [x] e2e tests
 - [ ] dockerize
-- [ ] write readme
+- [x] write readme
 

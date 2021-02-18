@@ -5,17 +5,26 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    meta: {
+      title: "Home"
+    }
   },
   {
     path: "/breed-selector",
     name: "Breed Selector",
-    component: () => import("../views/BreedSelectorPage.vue")
+    component: () => import("../views/BreedSelectorPage.vue"),
+    meta: {
+      title: "Breed Selector"
+    }
   },
   {
     path: "/favorites",
     name: "Favorites",
-    component: () => import("../views/FavoritesPage.vue")
+    component: () => import("../views/FavoritesPage.vue"),
+    meta: {
+      title: "Favorite Dogs"
+    }
   }
 ];
 
