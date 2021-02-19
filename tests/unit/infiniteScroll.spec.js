@@ -18,10 +18,11 @@ describe("dogCard", () => {
     });
     // document.documentElement.offsetHeight equals 0
     // they need to be the same in order for scroll event listener to trigger
-    document.documentElement.scrollTop = 0;
+    window.pageYOffset = 0;
     window.innerHeight = 0;
-    console.log(document.documentElement.offsetHeight);
     window.dispatchEvent(new Event("scroll"));
-    expect(wrapper.emitted()).toHaveProperty("loadMore");
+    setTimeout(() => {
+      expect(wrapper.emitted()).toHaveProperty("loadMore");
+    }, 1000);
   });
 });

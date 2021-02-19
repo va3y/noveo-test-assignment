@@ -7,6 +7,7 @@
 
 <script>
 import ErrorCard from "@/components/Layout/ErrorCard";
+import { debounce } from "lodash";
 
 export default {
   components: { ErrorCard },
@@ -18,17 +19,17 @@ export default {
   },
   emits: ["loadMore"],
   setup(_, context) {
-    let windowBottom;
-    window.onscroll = () => {
+    const scrollListener = () => {
+      let windowBottom;
       windowBottom =
-        document.documentElement.scrollTop + window.innerHeight ===
-        document.documentElement.offsetHeight;
+        window.innerHeight + window.pageYOffset >=
+        document.body.offsetHeight - 2;
       if (windowBottom) {
         context.emit("loadMore");
       }
     };
-
-    return {};
+    const debouncedListener = debounce(scrollListener, 200); //200 worked the best
+    window.addEventListener("scroll", debouncedListener);
   }
 };
 </script>
