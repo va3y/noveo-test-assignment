@@ -1,13 +1,13 @@
 # Vue.js Dogs
 
-A dog views, based on the [Dog CEO API](https://dog.ceo/dog-api/). Made with Vue 3 Composition API and SCSS.
+A dog viewer, based on the [Dog CEO API](https://dog.ceo/dog-api/). Made with Vue 3 Composition API and SCSS.
 
 The app primarily uses Vuex to fetch and store dogs from the API. It uses 2 main arrays: 
   
 1. `renderedArray` that stores dogs that are currently displayed.
-2. `favoritesArray` that stores favorite dogs and saves them to the HTML5 LocalStorage. Dog URL is used as a unique id. 
+2. `favoritesArray` that stores favorite dogs and saves them to the HTML5 LocalStorage. Image URL is used as a unique id. 
 
-The dog cards are stored as a dog object. Right now it is fairy simple: 
+The dog cards are stored as a dog object. Right now it is fairly simple: 
 
 ```
 dogObject: {
